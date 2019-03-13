@@ -21,6 +21,8 @@ holiday_list = {
   12 : [24,25,31],
   1 : [1],
     }
+# set to true to intersperse images from the alternates folder
+include_alternates = True
 
 is_holiday = False
 try:
@@ -53,6 +55,9 @@ if activep != curday:
     for file in listdir(dirlist[curday]):
         shutil.copy("%s/%s" % (dirlist[curday],file), "%s/%s" % (activedir,file))
     subprocess.call(["killall","feh"])
+    if include_alternates == True:
+      for file in listdir('%s/alternates' % basedir)
+        shutil.copy("%s/alternates/%s" % (basedir,file), "%s/%s" % (activedir,file))
 
 feh_check = subprocess.check_output(["ps","aux"])
 if feh_check.count("feh") == 0:
