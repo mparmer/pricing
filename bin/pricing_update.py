@@ -56,8 +56,12 @@ if activep != curday:
         shutil.copy("%s/%s" % (dirlist[curday],file), "%s/%s" % (activedir,file))
     subprocess.call(["killall","feh"])
     if include_alternates == True:
-      for file in listdir('%s/alternates' % basedir)
-        shutil.copy("%s/alternates/%s" % (basedir,file), "%s/%s" % (activedir,file))
+      if curday == weekday:
+        alternates_dir = '%s/alternates_weekday' % basedir
+      else
+        alternates_dir = '%s/alternates' % basedir
+      for file in listdir(alternates_dir)
+        shutil.copy("%s/%s" % (alternates_dir,file), "%s/%s" % (activedir,file))
 
 feh_check = subprocess.check_output(["ps","aux"])
 if feh_check.count("feh") == 0:
