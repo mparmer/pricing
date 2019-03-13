@@ -4,7 +4,8 @@ import subprocess
 import shutil
 from os import system,listdir,unlink
 
-basedir = '/home/pi/pricing'
+basedir = '/Users/michaelparmer/Projects/pricing'
+#basedir = '/home/pi/pricing'
 activedir = "%s/activepricing" % basedir
 dirlist = {'Sat':"%s/saturdaypricing" % basedir,
         'weekday':"%s/weekdaypricing" % basedir,
@@ -55,14 +56,14 @@ if activep != curday:
     for file in listdir(dirlist[curday]):
         shutil.copy("%s/%s" % (dirlist[curday],file), "%s/%s" % (activedir,file))
     subprocess.call(["killall","feh"])
-    if include_alternates == True:
-      if curday == weekday:
+    if include_alternates:
+      alternates_dir = '%s/alternates' % basedir
+
+      if curday == 'weekday':
         alternates_dir = '%s/alternates_weekday' % basedir
-      else
-        alternates_dir = '%s/alternates' % basedir
-      for file in listdir(alternates_dir)
+      for file in listdir(alternates_dir):
         shutil.copy("%s/%s" % (alternates_dir,file), "%s/%s" % (activedir,file))
 
 feh_check = subprocess.check_output(["ps","aux"])
 if feh_check.count("feh") == 0:
-    subprocess.call(["%s/bin/start_pricing.sh" % basedir])
+  subprocess.call(["%s/bin/start_pricing.sh" % basedir])
