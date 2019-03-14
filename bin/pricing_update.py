@@ -4,8 +4,7 @@ import subprocess
 import shutil
 from os import system,listdir,unlink
 
-basedir = '/Users/michaelparmer/Projects/pricing'
-#basedir = '/home/pi/pricing'
+basedir = '/home/pi/pricing'
 activedir = "%s/activepricing" % basedir
 dirlist = {'Sat':"%s/saturdaypricing" % basedir,
         'weekday':"%s/weekdaypricing" % basedir,
