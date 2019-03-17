@@ -36,7 +36,7 @@ activep = af.readline().strip()
 af.close()
 
 curday = time.strftime("%a",time.localtime())
-if curday in ['Fri','Sat'] and int(time.strftime("%H", time.localtime())) in [22,23,24,0,1,2,3,4]:
+if curday in ['Fri','Sat','Sun'] and int(time.strftime("%H", time.localtime())) in [22,23,24,0,1,2,3,4]:
     curday = 'thunder'
 if curday not in ['Sat','thunder']:
     curday = 'weekday'
