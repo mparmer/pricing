@@ -36,6 +36,7 @@ activep = af.readline().strip()
 af.close()
 
 curday = time.strftime("%a",time.localtime())
+dealday = time.strftime("%a",time.localtime()).lower()
 if curday in ['Fri','Sat','Sun'] and int(time.strftime("%H", time.localtime())) in [22,23,24,0,1,2,3,4]:
     curday = 'thunder'
 if curday not in ['Sat','thunder']:
@@ -62,6 +63,22 @@ if activep != curday:
         alternates_dir = '%s/alternates_weekday' % basedir
       for file in listdir(alternates_dir):
         shutil.copy("%s/%s" % (alternates_dir,file), "%s/%s" % (activedir,file))
+
+try:
+    if dealday == "mon":
+        shutil.copy("%s/dailydeals/mon.jpg" % (basedir), "%s/mon.jpg" % (activedir))
+    elif dealday == "tue" and (int(time.strftime("%H", time.localtime())) not in [19,20,21,22,23,24,0,1,2,3,4]):
+        shutil.copy("%s/dailydeals/tue.jpg" % (basedir), "%s/tue.jpg" % (activedir))
+    elif dealday == "wed":
+        pass
+    elif dealday == "thu":
+        shutil.copy("%s/dailydeals/thu.jpg" % (basedir), "%s/thu.jpg" % (activedir))
+    elif dealday == "fri":
+        shutil.copy("%s/dailydeals/fri.jpg" % (basedir), "%s/fri.jpg" % (activedir))
+    else:
+        pass
+except:
+    pass
 
 feh_check = subprocess.check_output(["ps","aux"])
 if feh_check.count("feh") == 0:
