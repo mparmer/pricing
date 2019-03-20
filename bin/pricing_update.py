@@ -71,10 +71,12 @@ try:
         shutil.copy("%s/dailydeals/tue.jpg" % (basedir), "%s/tue.jpg" % (activedir))
     elif dealday == "wed":
         pass
-    elif dealday == "thu":
+    elif dealday == "thu" and (int(time.strftime("%H", time.localtime())) not in [19,20,21,22,23,24,0,1,2,3,4]):
         shutil.copy("%s/dailydeals/thu.jpg" % (basedir), "%s/thu.jpg" % (activedir))
     elif dealday == "fri":
         shutil.copy("%s/dailydeals/fri.jpg" % (basedir), "%s/fri.jpg" % (activedir))
+    elif dealday == "sat":
+        shutil.copy("%s/dailydeals/sat.jpg" % (basedir), "%s/sat.jpg" % (activedir))
     else:
         pass
 except:
