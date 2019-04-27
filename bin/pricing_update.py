@@ -3,6 +3,7 @@ import time
 import subprocess
 import shutil
 from os import system,listdir,unlink
+import config as cfg
 
 basedir = '/home/pi/pricing'
 activedir = "%s/activepricing" % basedir
@@ -12,18 +13,21 @@ dirlist = {'Sat':"%s/saturdaypricing" % basedir,
         'holiday':"%s/holidaypricing" % basedir,
         'thunder':"%s/thunderpricing" % basedir,
         }
-holiday_list = {
-  2 : [20],
-  5 : [29],
-  7 : [4],
-  9 : [4],
-  11 : [10,23,24],
-  12 : [24,25,31],
-  1 : [1],
-    }
-# set to true to intersperse images from the alternates folder
-include_alternates = True
+#holiday_list = {
+#  2 : [20],
+#  5 : [29],
+#  7 : [4],
+#  9 : [4],
+#  11 : [10,23,24],
+#  12 : [24,25,31],
+#  1 : [1],
+#    }
+## set to true to intersperse images from the alternates folder
+#include_alternates = True
+holiday_list = cfg.holiday_list
+include_alternates = cfg.include_alternates
 
+# begin processing
 is_holiday = False
 try:
   holiday_list[time.localtime().tm_mon]
