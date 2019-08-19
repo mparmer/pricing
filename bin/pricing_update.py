@@ -2,8 +2,13 @@
 import time
 import subprocess
 import shutil
+from sys import exit
 from os import system,listdir,unlink
-import config as cfg
+try:
+    import config as cfg
+except:
+    print 'Config file missing, you should copy config.py.sample to config.py'
+    exit(0)
 
 basedir = '/home/pi/pricing'
 activedir = "%s/activepricing" % basedir
