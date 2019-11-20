@@ -3,3 +3,6 @@
 
 # Ignore changes in the config file
 bin/config.py
+
+#Ignore tilde files
+*~
