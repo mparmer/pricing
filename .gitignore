@@ -1,0 +1,5 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore changes in the config file
+bin/config.py
