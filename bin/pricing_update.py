@@ -2,7 +2,13 @@
 import time
 import subprocess
 import shutil
+from sys import exit
 from os import system,listdir,unlink
+try:
+    import config as cfg
+except:
+    print 'Config file missing, you should copy config.py.sample to config.py'
+    exit(0)
 
 basedir = '/home/pi/pricing'
 activedir = "%s/activepricing" % basedir
@@ -12,18 +18,21 @@ dirlist = {'Sat':"%s/saturdaypricing" % basedir,
         'holiday':"%s/holidaypricing" % basedir,
         'thunder':"%s/thunderpricing" % basedir,
         }
-holiday_list = {
-  2 : [20],
-  5 : [29],
-  7 : [4],
-  9 : [4],
-  11 : [10,23,24],
-  12 : [24,25,31],
-  1 : [1],
-    }
-# set to true to intersperse images from the alternates folder
-include_alternates = True
+#holiday_list = {
+#  2 : [20],
+#  5 : [29],
+#  7 : [4],
+#  9 : [4],
+#  11 : [10,23,24],
+#  12 : [24,25,31],
+#  1 : [1],
+#    }
+## set to true to intersperse images from the alternates folder
+#include_alternates = True
+holiday_list = cfg.holiday_list
+include_alternates = cfg.include_alternates
 
+# begin processing
 is_holiday = False
 try:
   holiday_list[time.localtime().tm_mon]
@@ -71,10 +80,12 @@ try:
         shutil.copy("%s/dailydeals/tue.jpg" % (basedir), "%s/tue.jpg" % (activedir))
     elif dealday == "wed":
         pass
-    elif dealday == "thu":
+    elif dealday == "thu" and (int(time.strftime("%H", time.localtime())) not in [19,20,21,22,23,24,0,1,2,3,4]):
         shutil.copy("%s/dailydeals/thu.jpg" % (basedir), "%s/thu.jpg" % (activedir))
     elif dealday == "fri":
         shutil.copy("%s/dailydeals/fri.jpg" % (basedir), "%s/fri.jpg" % (activedir))
+    elif dealday == "sat":
+        shutil.copy("%s/dailydeals/sat.jpg" % (basedir), "%s/sat.jpg" % (activedir))
     else:
         pass
 except:
