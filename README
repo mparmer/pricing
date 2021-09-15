@@ -3,9 +3,9 @@ to use:
 install Raspbian
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install feh screensaver
+sudo apt-get install feh vim
 clone this repository from git into /home/pi/pricing
-
+cp /home/pi/pricing/bin/
 set the desktop background file from pricing/raw/
 
 once the system is installed as such, all you have to do is put an entry in the cron table
@@ -14,3 +14,7 @@ crontab -e
 insert the following:
 * * * * * /home/pi/pricing/bin/pricing_update.py
 
+make sure that screen blanking is not enabled
+In Raspberry Pi Configuration Window, click on Display Tab.
+Look for the Screen Blanking row, click Disable . Then click OK .
+A window will open and asks if you like to reboot the Raspberry Pi. Click Yes .
