@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install feh vim
 clone this repository from git into /home/pi/pricing
-cp /home/pi/pricing/bin/
+cp /home/pi/pricing/bin/config.py.sample /home/pi/pricing/bin/config.py
 set the desktop background file from pricing/raw/
 
 once the system is installed as such, all you have to do is put an entry in the cron table
