@@ -16,5 +16,6 @@ insert the following:
 
 make sure that screen blanking is not enabled
 In Raspberry Pi Configuration Window, click on Display Tab.
-Look for the Screen Blanking row, click Disable . Then click OK .
-A window will open and asks if you like to reboot the Raspberry Pi. Click Yes .
+Look for the Screen Blanking row, click Disable. 
+Enable overscan from the same menu Then click OK.
+A window will open and asks if you like to reboot the Raspberry Pi. Click Yes.
