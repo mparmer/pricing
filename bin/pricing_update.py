@@ -7,7 +7,7 @@ from os import system,listdir,unlink
 try:
     import config as cfg
 except:
-    print 'Config file missing, you should copy config.py.sample to config.py'
+    print( 'Config file missing, you should copy config.py.sample to config.py')
     exit(0)
 
 basedir = '/home/pi/pricing'
@@ -92,5 +92,5 @@ except:
     pass
 
 feh_check = subprocess.check_output(["ps","aux"])
-if feh_check.count("feh") == 0:
+if str(feh_check).count("feh") == 0:
   subprocess.call(["%s/bin/start_pricing.sh" % basedir])
